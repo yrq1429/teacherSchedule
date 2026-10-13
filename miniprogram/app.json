@@ -1,0 +1,52 @@
+{
+  "pages": [
+    "pages/schedule/schedule",
+    "pages/feedback/feedback",
+    "pages/stats/stats",
+    "pages/profile/profile",
+    "pages/course-add/course-add",
+    "pages/course-import/course-import",
+    "pages/course-detail/course-detail",
+    "pages/feedback-edit/feedback-edit"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#EFF5F9",
+    "navigationBarTitleText": "教学手账",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#EFF5F9"
+  },
+  "tabBar": {
+    "color": "#65798B",
+    "selectedColor": "#234E70",
+    "backgroundColor": "#FCFDFE",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/schedule/schedule",
+        "text": "课表",
+        "iconPath": "images/tab-schedule.png",
+        "selectedIconPath": "images/tab-schedule-active.png"
+      },
+      {
+        "pagePath": "pages/feedback/feedback",
+        "text": "反馈",
+        "iconPath": "images/tab-feedback.png",
+        "selectedIconPath": "images/tab-feedback-active.png"
+      },
+      {
+        "pagePath": "pages/stats/stats",
+        "text": "统计",
+        "iconPath": "images/tab-stats.png",
+        "selectedIconPath": "images/tab-stats-active.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "images/tab-profile.png",
+        "selectedIconPath": "images/tab-profile-active.png"
+      }
+    ]
+  },
+  "permission": {},
+  "sitemapLocation": "sitemap.json"
+}

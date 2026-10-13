@@ -1,0 +1,45 @@
+<view class="page-head">
+  <view class="head-title">{{editId ? '编辑课程 ✏️' : '录一门课 ✏️'}}</view>
+  <view class="muted">{{editId ? '修改后点保存生效' : '保存后每周自动重复'}}</view>
+</view>
+
+<view class="card">
+  <view class="form-row">
+    <text class="label">🏷️ 名称</text>
+    <input placeholder="如：初二英语提高班" data-field="name" value="{{name}}" bindinput="onInput" />
+  </view>
+  <view class="form-row">
+    <text class="label">📚 科目</text>
+    <picker range="{{subjects}}" value="{{subjectIndex}}" bindchange="onSubjectChange">
+      <view class="picker-val">{{subjects[subjectIndex]}} ›</view>
+    </picker>
+  </view>
+  <view class="form-row">
+    <text class="label">📅 每周</text>
+    <picker range="{{weekdays}}" value="{{weekdayIndex}}" bindchange="onWeekdayChange">
+      <view class="picker-val">{{weekdays[weekdayIndex]}} ›</view>
+    </picker>
+  </view>
+  <view class="form-row">
+    <text class="label">🕐 开始</text>
+    <picker mode="time" value="{{startTime}}" data-field="startTime" bindchange="onTimeChange">
+      <view class="picker-val">{{startTime}} ›</view>
+    </picker>
+  </view>
+  <view class="form-row">
+    <text class="label">🕑 结束</text>
+    <picker mode="time" value="{{endTime}}" data-field="endTime" bindchange="onTimeChange">
+      <view class="picker-val">{{endTime}} ›</view>
+    </picker>
+  </view>
+  <view class="form-row">
+    <text class="label">📍 地点</text>
+    <input placeholder="选填，如：3 号教室" data-field="location" value="{{location}}" bindinput="onInput" />
+  </view>
+  <view class="form-row">
+    <text class="label">📝 备注</text>
+    <input placeholder="选填，如：教材进度、注意事项" data-field="note" value="{{note}}" bindinput="onInput" />
+  </view>
+</view>
+
+<button class="btn-primary save-btn" loading="{{saving}}" bindtap="onSave">保存课程</button>

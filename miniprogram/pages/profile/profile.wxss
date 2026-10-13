@@ -1,0 +1,43 @@
+.page-head {
+  padding: 32rpx 40rpx 8rpx;
+}
+
+.head-title {
+  font-size: 46rpx;
+  font-weight: 500;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.row-title {
+  font-weight: 500;
+  font-size: 30rpx;
+  margin-bottom: 8rpx;
+}
+
+.sub-btn {
+  background: #234E70;
+  color: #fff;
+  font-size: 26rpx;
+  border-radius: 999rpx;
+  padding: 0 36rpx;
+  line-height: 68rpx;
+  box-shadow: 0 6rpx 14rpx rgba(35, 78, 112, 0.3);
+}
+
+.sub-btn::after {
+  border: none;
+}
+
+.desc-item {
+  font-size: 24rpx;
+  color: #65798B;
+  line-height: 1.8;
+  margin-top: 10rpx;
+}
+
+.row {gap:20rpx;}.row > view {flex:1;min-width:0;}.sub-btn {flex-shrink:0;margin:0;padding:0 24rpx;border-radius:10rpx;box-shadow:none;}.desc-item {color:#65798B;}.head-title {line-height:1.35;}

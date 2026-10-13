@@ -1,0 +1,29 @@
+<view class="page-head">
+  <view class="head-kicker">个人 · 偏好与提醒</view><view class="head-title">我的工作台</view><view class="head-subtitle">管理提醒，让每一天更从容。</view>
+</view>
+
+<view class="card">
+  <view class="row">
+    <view>
+      <view class="row-title">我的身份标识</view>
+      <view class="muted">{{userId || '获取中…'}}</view>
+    </view>
+  </view>
+</view>
+
+<view class="card">
+  <view class="row">
+    <view>
+      <view class="row-title">次日课程提醒</view>
+      <view class="muted">剩余可推送次数：{{quota}} 次</view>
+    </view>
+    <button class="sub-btn" bindtap="onSubscribe">开启提醒</button>
+  </view>
+</view>
+
+<view class="card">
+  <view class="row-title">提醒使用说明</view>
+  <view class="desc-item">· 每晚 23:00 自动检查次日课表，有课才推送，没课不打扰</view>
+  <view class="desc-item">· 提醒内容为：明天共几节课、最早几点开始</view>
+  <view class="desc-item">· 微信平台限制：授权一次只能推送一条，建议每天打开小程序时顺手点一次「开启提醒」</view>
+</view>

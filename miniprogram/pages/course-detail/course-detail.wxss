@@ -1,0 +1,86 @@
+.hero {
+  border-radius: 0 0 40rpx 40rpx;
+  padding: 56rpx 40rpx 64rpx;
+  color: #fff;
+  box-shadow: 0 10rpx 28rpx rgba(61, 56, 51, 0.18);
+}
+
+.hero-name {
+  font-size: 40rpx;
+  font-weight: 500;
+  margin-bottom: 12rpx;
+}
+
+.hero-meta {
+  font-size: 28rpx;
+  opacity: 0.9;
+  margin-bottom: 20rpx;
+}
+
+.hero-tags {
+  display: flex;
+  gap: 16rpx;
+}
+
+.tag {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 999rpx;
+  padding: 8rpx 24rpx;
+  font-size: 24rpx;
+}
+
+.hero-note {
+  margin-top: 20rpx;
+  font-size: 26rpx;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 16rpx;
+  padding: 16rpx 24rpx;
+  line-height: 1.6;
+}
+
+.del-btn {
+  color: #c05b4d;
+  background: #fdf0ee;
+}
+
+.empty {
+  text-align: center;
+  padding: 100rpx 40rpx;
+}
+
+.center {
+  text-align: center;
+}
+
+.fb-role {
+  margin-bottom: 8rpx;
+}
+
+.fb-raw {
+  line-height: 1.8;
+  white-space: pre-wrap;
+}
+
+.fb-polished {
+  background: #E5EFF6;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  margin-top: 16rpx;
+  line-height: 1.8;
+  white-space: pre-wrap;
+}
+
+.polished-tag {
+  color: #234E70;
+  font-size: 24rpx;
+  margin-bottom: 8rpx;
+}
+
+.btns {
+  padding: 20rpx 40rpx 60rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.hero {background:#234E70;border-radius:18rpx;margin:24rpx 28rpx;padding:36rpx;box-shadow:none;}.hero-name {line-height:1.4;word-break:break-all;}.hero-tags {flex-wrap:wrap;}.tag {border-radius:6rpx;}

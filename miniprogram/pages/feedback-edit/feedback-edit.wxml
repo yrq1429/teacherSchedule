@@ -1,0 +1,50 @@
+<view class="page-head"><view class="head-kicker">课后 · 教学信笺</view><view class="head-title">写一份课堂反馈</view><view class="head-subtitle">你负责观察，让 AI 帮你整理表达。</view></view>
+<view class="card">
+  <view class="form-row">
+    <text class="label">关联课程</text>
+    <picker wx:if="{{courses.length > 0}}" range="{{courses}}" range-key="name" value="{{courseIndex}}" bindchange="onCourseChange">
+      <view class="picker-val">{{courses[courseIndex].name}}</view>
+    </picker>
+    <text wx:else class="muted">请先在课表页录入课程</text>
+  </view>
+  <view class="form-row">
+    <text class="label">上课日期</text>
+    <picker mode="date" value="{{classDate}}" bindchange="onDateChange">
+      <view class="picker-val">{{classDate}} ›</view>
+    </picker>
+  </view>
+  <view class="form-row">
+    <text class="label">润色角色</text>
+    <picker range="{{roles}}" value="{{roleIndex}}" bindchange="onRoleChange">
+      <view class="picker-val">{{roles[roleIndex]}}</view>
+    </picker>
+  </view>
+  <view class="form-row">
+    <text class="label">润色模型</text>
+    <picker range="{{providers}}" value="{{providerIndex}}" bindchange="onProviderChange">
+      <view class="picker-val">{{providers[providerIndex]}}</view>
+    </picker>
+  </view>
+</view>
+
+<view class="card">
+  <textarea
+    class="fb-input"
+    placeholder="随手写几句这节课的情况，如：今天讲了现在完成时，班里一半人还是分不清和过去时的区别，下次要带对比练习……"
+    value="{{content}}"
+    bindinput="onInput"
+    maxlength="2000"
+  />
+  <button class="polish-btn" loading="{{polishing}}" bindtap="onPolish">整理表达 · {{providers[providerIndex]}}</button>
+  <view class="polish-hint">AI 会保留你的分段结构，把口语化表达升级为专业版本发给家长；请核对事实与评价，确认后保存；原文和整理版都会保留</view>
+</view>
+
+<view wx:if="{{polished}}" class="card">
+  <view class="polished-head">
+    <view class="polished-tag">润色结果（对照上方原文检查）</view>
+    <view class="regen-btn" bindtap="onPolish">🔄 重新生成</view>
+  </view>
+  <view class="polished-text">{{polished}}</view>
+</view>
+
+<button class="btn-primary save-btn" loading="{{saving}}" bindtap="onSave">保存反馈</button>

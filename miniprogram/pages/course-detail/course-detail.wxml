@@ -1,0 +1,33 @@
+<view wx:if="{{loading}}" class="empty muted">加载中...</view>
+
+<block wx:elif="{{course}}">
+  <view class="hero">
+    <view class="hero-name">{{course.name}}</view>
+    <view class="hero-meta">{{course.date ? course.date + '（单次课）' : weekdayText}} {{course.startTime}} - {{course.endTime}}</view>
+    <view class="hero-tags">
+      <text class="tag">{{course.subject}}</text>
+      <text class="tag">{{hours}} 小时</text>
+      <text wx:if="{{course.location}}" class="tag">{{course.location}}</text>
+    </view>
+    <view wx:if="{{course.note}}" class="hero-note">📝 {{course.note}}</view>
+  </view>
+
+  <view class="section-title">课后反馈（{{feedbacks.length}}）</view>
+
+  <view wx:if="{{feedbacks.length === 0}}" class="card muted center">这门课还没有反馈记录</view>
+
+  <view class="card" wx:for="{{feedbacks}}" wx:key="_id">
+    <view class="fb-role muted">{{item.role}}</view>
+    <view class="fb-raw">{{item.content}}</view>
+    <view wx:if="{{item.polished}}" class="fb-polished" data-text="{{item.polished}}" bindtap="copyPolished">
+      <view class="polished-tag">润色版（点击复制）</view>
+      <view>{{item.polished}}</view>
+    </view>
+  </view>
+
+  <view class="btns">
+    <button class="btn-primary" bindtap="goWriteFeedback">写本课反馈</button>
+    <button class="btn-ghost" bindtap="goEdit">编辑课程</button>
+    <button class="btn-ghost del-btn" bindtap="onDelete">删除课程</button>
+  </view>
+</block>

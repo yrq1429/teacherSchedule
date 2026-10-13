@@ -1,0 +1,4 @@
+{
+  "desc": "教师课表助手",
+  "rules": [{ "action": "allow", "page": "*" }]
+}

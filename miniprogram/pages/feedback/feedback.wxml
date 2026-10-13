@@ -1,0 +1,44 @@
+<view class="page-head"><view class="head-kicker">课后 · 记录与沟通</view><view class="head-title">课堂札记</view><view class="head-subtitle">保留真实观察，整理每一次反馈。</view></view>
+<view class="search-bar">
+  <view class="search-box">
+    <text class="search-icon">⌕</text>
+    <input
+      class="search-input"
+      placeholder="搜学员名 / 课程 / 反馈内容"
+      value="{{keyword}}"
+      bindinput="onSearchInput"
+    />
+    <text wx:if="{{keyword}}" class="search-clear" bindtap="onClearKeyword">✕</text>
+  </view>
+</view>
+
+<view class="filter-row">
+  <view class="filter-chip {{timeFilter === 'all' ? 'active' : ''}}" data-v="all" bindtap="onTimeFilter">全部</view>
+  <view class="filter-chip {{timeFilter === 'week' ? 'active' : ''}}" data-v="week" bindtap="onTimeFilter">本周</view>
+  <view class="filter-chip {{timeFilter === 'month' ? 'active' : ''}}" data-v="month" bindtap="onTimeFilter">本月</view>
+  <view class="filter-count muted">{{feedbacks.length}} 条 · 长按可删</view>
+</view>
+
+<view wx:if="{{loading}}" class="empty muted">加载中...</view>
+
+<view wx:elif="{{feedbacks.length === 0}}" class="empty">
+  <view class="empty-icon">{{keyword || timeFilter !== 'all' ? '⌕' : '✏️'}}</view>
+  <view class="empty-title">{{keyword || timeFilter !== 'all' ? '没有匹配的反馈' : '还没有反馈记录'}}</view>
+  <view wx:if="{{!keyword && timeFilter === 'all'}}" class="muted">上完课随手记一条吧</view>
+</view>
+
+<block wx:else>
+  <view class="card fb-card" wx:for="{{feedbacks}}" wx:key="_id" data-id="{{item.courseId}}" data-fid="{{item._id}}" bindtap="goCourse" bindlongpress="onDeleteFeedback" hover-class="card-hover">
+    <view class="fb-head">
+      <text class="fb-course">{{item.courseName}}</text>
+      <text class="fb-date">{{item.classDate || ''}}</text>
+    </view>
+    <view class="fb-raw">{{item.content}}</view>
+    <view wx:if="{{item.polished && item.polished !== item.content}}" class="fb-polished">
+      <view class="polished-tag">整理后的表达 · 点击正文复制</view>
+      <view data-text="{{item.polished}}" catchtap="copyPolished">{{item.polished}}</view>
+    </view>
+  </view>
+</block>
+
+<view class="write-fab" bindtap="goWrite">＋ 写反馈</view>

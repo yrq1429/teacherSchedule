@@ -1,0 +1,9 @@
+page { background:#EFF5F9; color:#263D50; font-size:28rpx; font-family:"PingFang SC",sans-serif; }
+.card { background:#FCFDFE; border:1rpx solid #D7E2EB; border-radius:16rpx; padding:30rpx; margin:20rpx 28rpx; }
+.btn-primary,.btn-ghost {border-radius:12rpx;font-size:28rpx;font-weight:500;line-height:88rpx;}
+.btn-primary {background:#234E70;color:#FCFDFE;}.btn-ghost {background:#E0EBF3;color:#234E70;border:1rpx solid #C7D9E6;}
+.btn-primary::after,.btn-ghost::after {border:none;}.muted {color:#65798B;font-size:24rpx;line-height:1.65;}
+.section-title {font-size:32rpx;font-weight:600;margin:36rpx 32rpx 8rpx;}
+.page-head {padding:36rpx 32rpx 16rpx;}.head-kicker {font-size:20rpx;letter-spacing:3rpx;color:#65798B;margin-bottom:14rpx;}.head-title {font-size:46rpx;font-weight:600;letter-spacing:2rpx;}.head-subtitle {font-size:24rpx;color:#65798B;margin-top:14rpx;line-height:1.6;}
+
+.card {border:none;border-radius:18rpx;box-shadow:0 3rpx 16rpx rgba(35,78,112,.035);}.head-title {font-size:44rpx;color:#203E56;letter-spacing:1rpx;}.head-kicker {letter-spacing:1rpx;}.btn-primary,.btn-ghost {border-radius:14rpx;}

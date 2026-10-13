@@ -1,0 +1,53 @@
+<view class="card">
+  <view class="tip">📄 机构排课表（.xlsx）直接导入：</view>
+  <view class="picker-row">
+    <picker range="{{formats}}" value="{{formatIndex}}" bindchange="onFormatChange">
+      <view class="picker-chip">📑 {{formatIndex === 0 ? '机构总表' : '个人课表'}} ›</view>
+    </picker>
+    <picker range="{{subjects}}" value="{{subjectIndex}}" bindchange="onSubjectChange">
+      <view class="picker-chip">📚 {{subjects[subjectIndex]}} ›</view>
+    </picker>
+  </view>
+  <view class="file-row" wx:if="{{formatIndex === 0}}">
+    <input class="keyword-input" placeholder="你的名字（多个用逗号隔开）" value="{{keyword}}" bindinput="onKeywordInput" />
+  </view>
+  <view class="muted file-hint">{{formatIndex === 0 ? '多人混排的机构总表，按名字筛出你的课' : '整表都是你的课（如按周分 sheet 的个人课表），自动识别具体日期'}}</view>
+  <button class="btn-primary file-btn" bindtap="onChooseFile">从微信聊天选文件</button>
+</view>
+
+<view class="card">
+  <view class="tip">或者每行一门课粘贴文字，包含「星期 + 时间段」：</view>
+  <view class="example muted">周一 09:00-10:30 初二英语提高班 3号教室</view>
+  <textarea
+    class="raw-input"
+    placeholder="把你的课表整段粘贴进来…"
+    value="{{rawText}}"
+    bindinput="onInput"
+    maxlength="5000"
+  />
+  <view class="row-btns">
+    <button class="btn-ghost mini" bindtap="onChooseImage">📷 拍课表识别</button>
+    <button class="btn-ghost mini" bindtap="fillExample">填入示例</button>
+    <button class="btn-primary mini" bindtap="onParse">解析</button>
+  </view>
+</view>
+
+<block wx:if="{{parsed.length > 0}}">
+  <view class="section-title">识别出 {{parsed.length}} 门课{{failed > 0 ? '，' + failed + ' 行未识别' : ''}}</view>
+  <view class="card row" wx:for="{{parsed}}" wx:key="index">
+    <view class="row-main">
+      <view class="row-name">{{item.name}}</view>
+      <view class="muted">{{item.date ? item.date + '（单次课）' : '周' + ['一','二','三','四','五','六','日'][item.weekday - 1]}} {{item.startTime}}-{{item.endTime}} · {{item.subject}}{{item.location ? ' · ' + item.location : ''}}</view>
+    </view>
+    <view class="row-del" data-idx="{{index}}" bindtap="onRemoveRow">✕</view>
+  </view>
+  <button class="btn-primary import-btn" loading="{{importing}}" bindtap="onImport">确认导入 {{parsed.length}} 门课</button>
+</block>
+
+<view wx:if="{{parsed.length === 0 && failed > 0}}" class="muted center-tip">
+  有 {{failed}} 行没识别出来，检查是否缺了「周X」或时间段（格式 09:00-10:30）
+</view>
+
+<view class="muted center-tip">📷 图片识别由免费视觉模型 GLM-4V-Flash 提供，识别结果请先核对再导入</view>
+
+<view class="clear-link" bindtap="onClearAll">🗑 清空全部课程后重新导入</view>

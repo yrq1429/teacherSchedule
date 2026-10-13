@@ -1,0 +1,38 @@
+.page-head {
+  padding: 32rpx 40rpx 8rpx;
+}
+
+.head-title {
+  font-size: 40rpx;
+  font-weight: 500;
+  margin-bottom: 6rpx;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  padding: 28rpx 0;
+  border-bottom: 1rpx solid #F5EFE6;
+}
+
+.form-row:last-child {
+  border-bottom: none;
+}
+
+.label {
+  width: 150rpx;
+  color: #8a8378;
+  font-size: 28rpx;
+}
+
+input {
+  flex: 1;
+}
+
+.picker-val {
+  color: #263D50;
+}
+
+.save-btn {
+  margin: 48rpx 40rpx;
+}
