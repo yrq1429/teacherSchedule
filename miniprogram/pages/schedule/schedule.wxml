@@ -1,6 +1,6 @@
 <view class="journal">
   <view class="header">
-    <view class="header-copy"><view class="eyebrow">{{greeting}} · 教学手账</view><view class="journal-title">课堂，有序发生。</view><view class="date-sub">把安排交给课表，把专注留给课堂。</view></view>
+    <view class="header-copy"><view class="eyebrow">{{greeting}} · 教学手账</view><view class="journal-title">今天的课堂</view><view class="date-sub">课程安排与授课记录，一目了然。</view></view>
     <view class="date-badge"><text class="badge-month">{{displayMonth || '—'}} 月</text><text class="badge-day">{{displayDay || '—'}}</text><button class="today-btn" bindtap="backToday">今天 ↗</button></view>
   </view>
   <view class="week-heading"><text>{{weekRange}}</text><text>左右滑动切换周</text></view>
@@ -9,14 +9,19 @@
     <view wx:for="{{weekDates}}" wx:key="full" class="date-cell {{selectedDate === item.full ? 'active' : ''}}" data-full="{{item.full}}" bindtap="onDateTap"><text class="cell-week">{{item.label}}</text><text class="cell-num">{{item.dayNum}}</text><view wx:if="{{item.isToday}}" class="cell-dot"></view></view>
     <button class="week-arrow" bindtap="nextWeek" aria-label="下一周">›</button>
   </view>
-  <view wx:if="{{loading}}" class="empty"><view class="empty-mark">…</view><view class="empty-title">正在翻开这一页</view><view class="muted">读取课程与授课记录</view></view>
+  <view wx:if="{{loading}}" class="loading-panel" aria-role="status" aria-label="正在加载课程">
+    <view class="loading-status"><view class="loading-spinner"></view><text>正在同步这一天的安排</text><view class="loading-dots"><view></view><view></view><view></view></view></view>
+    <view class="skeleton-summary"><view class="skeleton skeleton-number"></view><view class="skeleton skeleton-number"></view><view class="skeleton skeleton-number"></view></view>
+    <view class="skeleton-focus"><view class="skeleton skeleton-tag"></view><view class="skeleton-focus-body"><view class="skeleton skeleton-clock"></view><view class="skeleton-lines"><view class="skeleton skeleton-title"></view><view class="skeleton skeleton-subtitle"></view></view></view></view>
+    <view class="skeleton-list"><view wx:for="{{[1, 2, 3]}}" wx:key="*this" class="skeleton-row"><view class="skeleton skeleton-time"></view><view class="skeleton-lines"><view class="skeleton skeleton-title"></view><view class="skeleton skeleton-subtitle"></view></view></view></view>
+  </view>
   <view wx:elif="{{loadError}}" class="empty"><view class="empty-title">这一页暂时没能打开</view><button class="btn-ghost retry-btn" bindtap="retryLoad">重新加载</button></view>
   <block wx:else>
-    <view class="day-summary"><view class="summary-line"><text>{{dateTitle}} · {{courses.length}} 节安排</text><text>已打卡 {{doneCount}} / {{courses.length}}</text></view><view class="progress-track"><view class="progress-fill" style="width: {{progress}}%"></view></view><view class="summary-foot">计划 {{plannedHours}} 小时<text>{{courses.length - doneCount}} 节待打卡</text></view></view>
+    <view class="day-summary"><view class="summary-metric"><text class="metric-value">{{courses.length}}<text class="metric-unit">节</text></text><text class="metric-label">{{dateTitle}}安排</text></view><view class="summary-metric"><text class="metric-value">{{plannedHours}}<text class="metric-unit">h</text></text><text class="metric-label">计划授课</text></view><view class="summary-metric"><text class="metric-value">{{doneCount}}<text class="metric-unit">/{{courses.length}}</text></text><text class="metric-label">已打卡</text></view></view>
     <view wx:if="{{focus}}" class="focus-card" data-id="{{focus._id}}" bindtap="goDetail" hover-class="card-hover">
       <view class="focus-top"><view class="focus-label"><view class="live-dot"></view>{{focusLabel}}</view><text class="focus-tag">{{focus.subject}}</text></view>
       <view class="focus-body"><view class="focus-clock"><view class="focus-time">{{focus.startTime}}</view><view class="focus-end">至 {{focus.endTime}}</view></view><view class="focus-info"><view class="focus-name">{{focus.name}}</view><view class="focus-location">{{focus.location || '未填写地点'}}</view></view></view>
-      <view class="focus-bottom"><text>准备好，开始下一段课堂。</text><text class="focus-link">课程详情 ↗</text></view>
+      <view class="focus-bottom"><text>课程安排 · {{focus.subject}}</text><text class="focus-link">课程详情 ↗</text></view>
     </view>
     <view class="section-line"><text class="section-name">{{dateTitle}}的时间轴</text><text class="section-note">{{courses.length}} 节课程</text></view>
     <view wx:if="{{courses.length === 0}}" class="empty"><view class="empty-art"><view class="paper-line"></view><view class="paper-line short"></view><text>休</text></view><view class="empty-title">留白，也是日程的一部分</view><view class="muted">这一天没有课程安排，给自己一点时间。</view></view>
@@ -25,5 +30,4 @@
     </view>
   </block>
   <view class="fab-row"><button class="btn-ghost fab" bindtap="goImport">导入课表 ↗</button><button class="btn-primary fab" bindtap="goAdd">＋ 新增课程</button></view>
-  <view class="page-signature">记录教学，也记录成长。</view>
 </view>

@@ -11,8 +11,8 @@
 
 .picker-chip {
   font-size: 26rpx;
-  color: #234E70;
-  background: #E0EBF3;
+  color: #263746;
+  background: #ECEDEA;
   border-radius: 999rpx;
   padding: 12rpx 28rpx;
 }
@@ -31,7 +31,7 @@
 
 .keyword-input {
   flex: 1;
-  background: #E5EFF6;
+  background: #F0F1ED;
   border-radius: 999rpx;
   padding: 14rpx 28rpx;
   font-size: 26rpx;

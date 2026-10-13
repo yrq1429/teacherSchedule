@@ -10,40 +10,40 @@
     "pages/feedback-edit/feedback-edit"
   ],
   "window": {
-    "navigationBarBackgroundColor": "#EFF5F9",
+    "navigationBarBackgroundColor": "#F6F5F1",
     "navigationBarTitleText": "教学手账",
     "navigationBarTextStyle": "black",
-    "backgroundColor": "#EFF5F9"
+    "backgroundColor": "#F6F5F1"
   },
   "tabBar": {
-    "color": "#65798B",
-    "selectedColor": "#234E70",
-    "backgroundColor": "#FCFDFE",
+    "color": "#8B9296",
+    "selectedColor": "#263746",
+    "backgroundColor": "#FFFFFF",
     "borderStyle": "white",
     "list": [
       {
         "pagePath": "pages/schedule/schedule",
         "text": "课表",
-        "iconPath": "images/tab-schedule.png",
-        "selectedIconPath": "images/tab-schedule-active.png"
+        "iconPath": "images/tab-schedule-v3.png",
+        "selectedIconPath": "images/tab-schedule-active-v3.png"
       },
       {
         "pagePath": "pages/feedback/feedback",
         "text": "反馈",
-        "iconPath": "images/tab-feedback.png",
-        "selectedIconPath": "images/tab-feedback-active.png"
+        "iconPath": "images/tab-feedback-v3.png",
+        "selectedIconPath": "images/tab-feedback-active-v3.png"
       },
       {
         "pagePath": "pages/stats/stats",
         "text": "统计",
-        "iconPath": "images/tab-stats.png",
-        "selectedIconPath": "images/tab-stats-active.png"
+        "iconPath": "images/tab-stats-v3.png",
+        "selectedIconPath": "images/tab-stats-active-v3.png"
       },
       {
         "pagePath": "pages/profile/profile",
         "text": "我的",
-        "iconPath": "images/tab-profile.png",
-        "selectedIconPath": "images/tab-profile-active.png"
+        "iconPath": "images/tab-profile-v3.png",
+        "selectedIconPath": "images/tab-profile-active-v3.png"
       }
     ]
   },

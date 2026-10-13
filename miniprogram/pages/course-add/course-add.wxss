@@ -30,7 +30,7 @@ input {
 }
 
 .picker-val {
-  color: #263D50;
+  color: #263746;
 }
 
 .save-btn {

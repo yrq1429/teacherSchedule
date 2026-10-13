@@ -73,21 +73,22 @@ Page({
   },
 
   async loadData() {
-    this.setData({ loading: true, loadError: false, focus: null });
     const requestedDate = this.data.selectedDate;
-    const db = wx.cloud.database();
+    const requestId = this.loadRequestId = (this.loadRequestId || 0) + 1;
+    this.setData({ loading: true, loadError: false, focus: null,
+      displayMonth: requestedDate.slice(5, 7), displayDay: requestedDate.slice(8, 10) });
     try {
       const [allCourses, logRes] = await Promise.all([
         util.fetchAll('courses'),
         util.fetchAll('logs', { date: requestedDate })
       ]);
-      if (requestedDate !== this.data.selectedDate) return;
+      if (requestId !== this.loadRequestId || requestedDate !== this.data.selectedDate) return;
       this.allCourses = allCourses;
       this.doneIds = logRes.map(l => l.courseId + l.date);
       console.log('[课表] 拉到课程数:', allCourses.length, '今天选中日期:', this.data.selectedDate);
       this.filterDay();
     } catch (e) {
-      if (requestedDate !== this.data.selectedDate) return;
+      if (requestId !== this.loadRequestId || requestedDate !== this.data.selectedDate) return;
       console.error('加载失败', e);
       this.allCourses = this.allCourses || [];
       this.doneIds = this.doneIds || [];

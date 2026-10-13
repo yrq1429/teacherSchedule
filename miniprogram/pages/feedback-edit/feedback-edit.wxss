@@ -22,8 +22,8 @@
 
 .polish-btn {
   margin-top: 20rpx;
-  background: #E0EBF3;
-  color: #234E70;
+  background: #ECEDEA;
+  color: #263746;
   font-size: 26rpx;
   border-radius: 12rpx;
 }
@@ -40,7 +40,7 @@
 }
 
 .polished-tag {
-  color: #234E70;
+  color: #263746;
   font-size: 24rpx;
   margin-bottom: 12rpx;
 }
@@ -58,8 +58,8 @@
 
 .regen-btn {
   font-size: 24rpx;
-  color: #234E70;
-  background: #E0EBF3;
+  color: #263746;
+  background: #ECEDEA;
   border-radius: 999rpx;
   padding: 8rpx 24rpx;
 }
@@ -73,4 +73,4 @@
   margin: 40rpx;
 }
 
-.fb-input {min-height:320rpx;line-height:1.8;background:repeating-linear-gradient(transparent,transparent 49rpx,#D7E2EB 50rpx);}.polish-btn {background:#234E70;color:#FCFDFE;line-height:80rpx;}.polish-hint {color:#65798B;}.polished-text {color:#334F65;}.polished-head {gap:12rpx;}
+.fb-input {min-height:320rpx;line-height:1.8;background:repeating-linear-gradient(transparent,transparent 49rpx,#E2E4E1 50rpx);}.polish-btn {background:#263746;color:#FFFFFF;line-height:80rpx;}.polish-hint {color:#747D83;}.polished-text {color:#3E4D56;}.polished-head {gap:12rpx;}
